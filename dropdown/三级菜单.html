@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dropdown</title>
+	<style type="text/css">
+        .navmenu
+        {
+            font-size: 12px;
+            font-weight: bold;
+            overflow: auto;
+        }
+        .navmenu ul {
+        	list-style: none;
+        }
+        .navmenu li
+        {
+            float: left;
+            margin-right: 1px;
+        }
+        .navmenu li a
+        {
+            line-height: 20px;
+            text-decoration: none;
+            background: #DDDDDD;
+            color: #666666;
+            display: block;
+            width: 80px;
+            text-align: center;
+        }
+		.navmenu li ul {
+			display: none;
+			padding:0;
+			position: relative;
+		}
+		.navmenu li:hover ul {
+			display: block;
+			width:80px;
+		}
+		.navmenu li:hover ul li ul {
+			display: none;
+		}
+		.navmenu li ul li ul {
+			position: absolute;
+			top:1px;
+			left: 80px;
+			margin-left: 1px;
+		}
+		/*.navmenu li ul li:hover ul {
+			display: block;
+		}*/
+		.navmenu a:hover {
+			background-color: #0af;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="navmenu" id="navmenu">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li><a href="#" >课程大厅+</a>
+				<ul>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">JQuery</a></li>
+					<li><a href="#">CSS3</a></li>
+					<li><a href="#">HTML5</a></li>
+				</ul>
+			</li>
+			<li><a href="#">学习中心+</a>
+				<ul>
+			       	<li><a href="#">视频学习+</a>
+						<ul>
+							<li><a href="#">前端开发</a></li>
+							<li><a href="#">后台开发</a></li>
+						</ul>
+			       	</li>
+			      	<li><a href="#">案例学习</a></li>
+			      	<li><a href="#">交流平台</a></li>
+			    </ul>
+			</li>
+			<li><a href="#">经典案例</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+	</div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var Lis = document.getElementsByTagName("li");
+            for (var i = 0; i < Lis.length; i++) {
+                Lis[i].onmouseover = function () {
+                    var u = this.getElementsByTagName("ul")[0];
+		//如果包含子菜单，就将子菜单显示
+		            if(u !== undefined)
+                    u.style.display = "block";
+
+                }
+
+                Lis[i].onmouseout = function () {
+                    var u = this.getElementsByTagName("ul")[0];
+		//如果包含子菜单，就将子菜单隐藏
+                    if (u != undefined) {
+                        u.style.display = "none";
+                    }
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

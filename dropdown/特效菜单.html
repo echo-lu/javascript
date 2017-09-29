@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>特效菜单</title>
+	<style>
+		.navlist {
+			position: absolute;
+			top:10px;
+		}
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+		.navlist a {
+			margin-left: 60px;
+			color: #666;
+		}
+		.expand {
+			height:0px;
+			background-color: #333d4d;
+			overflow: hidden;
+			position: relative;
+			top:30px;
+			width:100%;
+		}
+		.expdiv {
+			height: 130px;
+			width: 500%;
+		}
+		.expdiv-list {
+			width:20%;
+			text-align: center;
+			float: left;
+			line-height: 110px;
+			color:#fff;
+		}
+		.expand .close-btn {
+			width:120px;
+			height:20px;
+			background: url(images/broswer_home.png) no-repeat -13px -117px;
+			position: absolute;
+			left:50%;
+			bottom: -2px;
+			margin-left: -60px;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div id="menuList" class="navlist">
+		<a href="#" class="nav-btn">首页<span>&nbsp;&nbsp;&nbsp;</span></a>
+        <a href="" class="nav-btn">课程大厅<span>&nbsp;&nbsp;&nbsp;</span></a>
+        <a href="" class="nav-btn">学习中心<span>&nbsp;&nbsp;&nbsp;</span></a>
+        <a href="" class="nav-btn" data-device="#personalItem">个人中心<span>&nbsp;&nbsp;&nbsp;</span></a>
+        <a href="" class="nav-btn">关于我们<span>&nbsp;&nbsp;&nbsp;</span></a>
+	</div>
+	<div class="expand" id="expandZone">
+		<div class="expdiv">
+			<div class="expdiv-list">
+				<a href="#" target="_blank" class="btn zj" id="download-link">
+					<span class="icon"></span>
+                	<span class="text">主页</span>
+                </a>
+			</div>
+			<div class="expdiv-list">
+				<a href="#" target="_blank" class="btn zj" id="A4">
+					<span class="icon"></span>
+                    <span class="text">前端课程</span>
+                </a>
+                <a href="#" target="_blank" class="btn zj" id="A5">
+                    	<span class="icon"></span>
+                         <span class="text">手机开发</span>
+                </a>
+                <a href="#" target="_blank" class="btn zj" id="A6">
+                	<span class="icon"></span>
+                    <span class="text">后台编程</span>
+                </a>
+			</div>
+			<div class="expdiv-list">
+				<a href="#" target="_blank" class="btn zj" id="A1">
+					<span class="icon"></span>
+                    <span class="text">Javascript</span>
+                </a>
+                <a href="#" target="_blank" class="btn zj" id="A2">
+                	<span class="icon"></span>
+                    <span class="text">CSS</span>
+                </a>
+                <a href="#" target="_blank" class="btn zj" id="A3">
+                	<span class="icon"></span>
+                    <span class="text">JQuery</span>
+                </a>
+			</div>
+			<div class="expdiv-list">
+				个人信息：
+			</div>
+			<div class="expdiv-list"> 
+				公司地址：北京市西城区德外大街10号
+			</div>
+		</div>
+		<div class="close-btn" id="closeBtn"></div>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#menuList').on('click','a',function() {
+				if($(this).hasClass('btn-active')) {
+					$('#expandZone #closeBtn').click();
+					return false;
+				}
+
+				var curIndex = $(this).index(),
+					mlValue = '-' + curIndex*100 + '%';
+				if($('#expandZone').hasClass("active")) {
+					$('#expandZone .expdiv').animate({marginLeft:mlValue});
+				} else {
+					$('#expandZone .expdiv').css({marginLeft:mlValue});
+					$('#expandZone').animate({height:"130px"}).addClass("active")
+				}
+
+				$(this).addClass('btn-active').siblings().removeClass('btn-active')
+				return false;
+			});
+
+			$('#expandZone #closeBtn').on('click',function() {
+				$('#expandZone').animate({height:"0px"},function() {
+					$(this).removeClass('active');
+					$('#menuList .btn-active').removeClass('btn-active')
+				});
+				return false;
+			})		
+		})
+	</script>
+</body>
+</html>

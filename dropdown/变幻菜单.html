@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dropdown</title>
+	<style type="text/css">
+		.top-nav
+        {
+            font-size: 12px;
+            font-weight: bold;
+            border-bottom: 8px solid #DC4E1B;
+            overflow: auto;
+        }
+        .top-nav ul {
+        	list-style: none;
+        }
+        .top-nav li
+        {
+            float: left;
+            margin-right: 1px;
+        }
+        .top-nav li a
+        {
+            line-height: 20px;
+            text-decoration: none;
+            background: #DDDDDD;
+            color: #666666;
+            display: block;
+            width: 80px;
+            text-align: center;
+        }
+		.top-nav li  a:last-child {
+			display: none;
+		}
+
+		.top-nav li:hover a {
+			display: block;
+			width: 80px;
+			text-align: center;
+			line-height: 20px;
+			background-color: #dc4e1f;
+			color:#fff;
+		}
+		.top-nav li:hover a:first-child {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="top-nav" id="nav">
+		<ul>
+			<li><a href="#">首页</a><a href="#">Home</a></li>
+			<li><a href="#" >课程大厅</a><a href="#">Course</a></li>
+			<li><a href="#">学习中心</a><a href="#">Learn</a></li>
+			<li><a href="#">经典案例</a><a href="#">Example</a></li>
+			<li><a href="#">关于我们</a><a href="#">About</a></li>
+		</ul>
+	</div>
+</body>
+</html>
