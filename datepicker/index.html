@@ -1,1 +1,66 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DatePicker</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="make.js"></script>
+	<style>
+		.datepicker {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 5px;
+			height:24px;
+			line-height: 24px;
+			width:230px;
+		}
+		.datepicker:focus {
+			outline: 0 none;
+			border:1px solid #1abc9c;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="datepicker">
+	<!-- <div class="ui-datapicker-wrapper">
+		<div class="ui-datapicker-header">
+			<a href="#" class="ui-datapicker-btn ui-datapicker-prev-btn">&lt;</a>
+			<span class="ui-datapicker-curr-month">2016-12</span>
+			<a href="#" class="ui-datapicker-btn ui-datapicker-next-btn">&gt;</a>
+		</div>
+		<div class="ui-datapicker-body">
+			<table>
+				<thead>
+					<tr>
+						<th>一</th>
+						<th>二</th>
+						<th>三</th>
+						<th>四</th>
+						<th>五</th>
+						<th>六</th>
+						<th>日</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>29</td>
+						<td>30</td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> -->
+	<script type="text/javascript">
+		// var monthData = datepicker.getMonthData(2017,12);
+		// console.log(monthData)
+		// datepicker.init(document.querySelector('.ui-datapicker-wrapper'));
+		datepicker.init('.datepicker');
+	</script>
+</body>
+</html>
