@@ -30,7 +30,7 @@
 			if(i%7 === 0) {
 				html += '<tr>';
 			}
-			html += '<td>' + date.showDate + '</td>'
+			html += '<td data-date="'+date.date + '">' + date.showDate + '</td>'
 			if(i%7 === 6) {
 				html += '</tr>';
 			}
@@ -54,10 +54,15 @@
 		if(direction === 'next') month++;
 		var html = datepicker.buildUi(year,month);
 		//$dom.innerHTML = html;
-		$wrapper = document.createElement('div');
-		$wrapper.className = 'ui-datepicker-wrapper';
+		 $wrapper = document.querySelector('.ui-datepicker-wrapper');
+		if(!$wrapper) {
+			$wrapper = document.createElement('div');
+			$wrapper.className = 'ui-datepicker-wrapper';
+			document.body.appendChild($wrapper);
+		}
+		
 		$wrapper.innerHTML = html;
-		document.body.appendChild($wrapper);
+		
 	}
 
 	datepicker.init = function(input) {
@@ -97,5 +102,30 @@
 			
 		},false);
 
+		$wrapper.addEventListener('click',function(e){
+			var $target = e.target;
+			if($target.tagName.toLowerCase() !== 'td') return;
+			var date = new Date(monthData.year,monthData.month - 1,$target.dataset.date);
+
+			$input.value = format(date);
+
+			$wrapper.classList.remove('ui-datepicker-wrapper-show');
+			isOpen = false;
+		},false);
+
+	}
+
+	function format(date) {
+		ret = '';
+		var padding = function(num) {
+			if(num<=9) {
+				return '0' + num;
+			}
+			return num;
+		}
+		ret += date.getFullYear() + '-';
+		ret += padding(date.getMonth() + 1) + '-';
+		ret += padding(date.getDate()) ;
+		return ret;
 	}
 })()
